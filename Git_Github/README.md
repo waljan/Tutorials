@@ -276,7 +276,7 @@ git log --oneline
 
 Pull remote repo:
 ```
-git pull
+git pull origin master
 ```
 
 Push changes:
