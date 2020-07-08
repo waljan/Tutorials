@@ -1,0 +1,28 @@
+version: '2'
+services:
+        database:
+                image: oracle/database:18.4.0-xe
+                #volumes:
+                #        - `pwd`:/opt/oracle/oradata
+
+                ports:
+                        - 1521:1521
+                        - 5500:5500
+
+                environment:
+                        - ORACLE_PWD=dbpassword1
+        DevEnv:
+                image: jw/gpu-jpnb_oracle-ic
+                volumes:
+                        - ./Dev/:/project
+
+                ports:
+                        - 8888:8888
+                depends_on:
+                        - database
+
+
+
+
+#docker run --name OracleDB-18.4.0-xe -p 1521:1521 -p 5500:5500 -e ORACLE_PWD=dbpassword96 -v `pwd`:/opt/oracle/oradata oracle/database:18.4.0-xe
+ 
