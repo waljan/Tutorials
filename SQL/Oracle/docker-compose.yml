@@ -2,15 +2,19 @@ version: '2'
 services:
         database:
                 image: oracle/database:18.4.0-xe
-                #volumes:
+                # volumes:
                 #        - `pwd`:/opt/oracle/oradata
 
                 ports:
                         - 1521:1521
                         - 5500:5500
 
-                environment:
-                        - ORACLE_PWD=dbpassword1
+                # environment:
+                #        - ORACLE_PWD=dbpassword1
+
+                env_file:
+                        - db.env
+
         DevEnv:
                 image: jw/gpu-jpnb_oracle-ic
                 volumes:
